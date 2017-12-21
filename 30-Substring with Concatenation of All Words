@@ -7,7 +7,7 @@ Solutions:
 从字符串s的第一个char开始遍历，长度是0到s.length()-n*m，把所有满足条件的index加到结果里。
 
 Use HashMap to store every string of the array words as the key, and set correspoding number of this string as its value.
-Define two integer variable m and n. m represents the the length of the words, n represents the length of every string element of the arrary words.
+Define two integer variables m and n. m represents the the length of the words, n represents the length of every string element of the arrary words.
 Traverse the target string s from index 0 to s.length()-n*m, if index satisfy the requirement, add the index into the result list.
 
 
@@ -23,7 +23,6 @@ public List<Integer> findSubstring(String s, String[] words) {
         {
             map.put(str, map.getOrDefault(str, 0)+1);
         }
-        
         for(int i=0;i<=s.length()-n*m;i++)
         {
             HashMap<String, Integer> wordmap = new HashMap<String, Integer>(map);
