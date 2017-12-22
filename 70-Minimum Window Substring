@@ -15,6 +15,16 @@ Solutions:
 当total=0时，匹配成功，更新一次sliding window的size长度（如果比当前的值小的话）
 当total=0时要进行循环操作直到total此时为正数之后再继续对i指针进行+1的操作
 
+t: A B C 
+
+s: A D O B E C O D E B A N C
+
+Array cnf: ``` A B C D E ``` N ``` O
+               1 1 1 0 0     0     0
+
+from means the start index of the minimum window
+len means the current minimum length of the window
+
 Source Code:
 public String minWindow(String s, String t) {
         //sliding window
