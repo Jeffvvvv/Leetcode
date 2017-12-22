@@ -1,0 +1,52 @@
+Quicksort
+
+Time Complexity:O(log(n))
+
+Source Code:
+public static void quicksort(int[] nums, int low, int high)
+	{
+		if(nums == null||nums.length == 0)
+		{
+			return;
+		}
+		if(low >= high)
+		{
+			return;
+		}
+
+		int i = low;
+		int j = high;
+		int pivot = nums[low + (high-low)/2];
+		int temp = 0;
+
+		while(i<=j)
+		{
+			while(nums[i] < pivot)
+			{
+				i++;
+			}
+
+			while(nums[j] > pivot)
+			{
+				j--;
+			}
+
+			if(i<=j)
+			{
+				temp = nums[i];
+				nums[i] = nums[j];
+				nums[j] = temp;
+				i++;
+				j--;
+			}
+		}
+    
+		if(low<j)
+		{
+			quicksort(nums,low,j);
+		}
+		if(high>i)
+		{
+			quicksort(nums,i,high);
+		}
+	}
