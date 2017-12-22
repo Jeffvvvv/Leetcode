@@ -1,0 +1,50 @@
+70-Minimum Window Substring
+
+***Important interviewing problems - sliding windows***
+
+Tag: Sliding window/array-Ascii/two pointers
+
+Time Complexity: O(log(n))
+Space Complexity: O(1), constant space storage
+
+Solutions:
+首先用一个长度为128的整形数组来存储128个Ascii字符的个数，用string t来初始化这个数组的值
+然后对String s设定双指针，双指针框起来的区域就是sliding window
+用cnf[s.charAt(i)]-- >0？来判断是否total可以减1，如果cnf[s.charAt(i)]-- >0，那表示目前s中的这个字符是t中出现过的，所以total减1
+定义整型变量total表示到现在为止还剩下多少个t中的字符需要在s中匹配
+当total=0时，匹配成功，更新一次sliding window的size长度（如果比当前的值小的话）
+当total=0时要进行循环操作直到total此时为正数之后再继续对i指针进行+1的操作
+
+Source Code:
+public String minWindow(String s, String t) {
+        //sliding window
+        //number of Ascii notation
+        int[] cnf = new int[128];
+        int from = 0;
+        int len = Integer.MAX_VALUE;
+        int total = t.length();
+        for(char afx:t.toCharArray())
+        {
+            cnf[afx]++;
+        }  
+        for(int i=0, j=0;i<s.length();i++)
+        {
+            if(cnf[s.charAt(i)]-- >0)
+            {
+                total--;
+            }
+            while(total==0)
+            {
+                if(len>i-j+1)
+                {
+                    len = i-j+1;
+                    from = j;
+                }
+                if(++cnf[s.charAt(j++)] > 0)
+                {
+                    total++;
+                }
+            }
+        }
+        return (len == Integer.MAX_VALUE)?"":s.substring(from, from+len);
+    }
