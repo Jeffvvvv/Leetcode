@@ -1,0 +1,37 @@
+Recursion: For (1, n), every node can be a root in a tree. Here, we firstly set a for loop(i=1->n) meaning n roots.
+
+For each root k, the left tree is (1, k-1), right tree is(k+1, end). Here we recursively call the function and compute the left tree 
+and right tree. Finally embed all the probable trees together, return the list.
+
+
+public List<TreeNode> generateTrees(int n) {
+        if(n==0) return new ArrayList();
+        return generateList(1, n);
+    }
+    
+    private List<TreeNode> generateList(int start, int end)
+    {
+        List<TreeNode> list = new ArrayList<TreeNode>();
+        if(start>end)
+        {
+            list.add(null);
+        }
+        
+        for(int i=start;i<=end;i++)
+        {
+            List<TreeNode> leftlist = generateList(start, i-1);
+            List<TreeNode> rightlist = generateList(i+1, end);
+            for(TreeNode left:leftlist)
+            {
+                for(TreeNode right:rightlist)
+                {
+                    TreeNode root = new TreeNode(i);
+                    root.left = left;
+                    root.right = right;
+                    list.add(root);
+                }
+            }
+        }
+        
+        return list;
+    }
