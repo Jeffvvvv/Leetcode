@@ -1,0 +1,29 @@
+基本做法还是Iteratively Inorder + two variables
+
+比inorder多加了一个比较的过程、
+
+public boolean isValidBST(TreeNode root) {
+        if(root==null) return true;
+        TreeNode prev = null;
+        TreeNode curr = root;
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        while(curr!=null||!stack.isEmpty())
+        {
+            if(curr!=null)
+            {
+                stack.push(curr);
+                curr = curr.left;
+            }
+            else
+            {
+                TreeNode p = stack.pop();
+                if(prev!=null&&prev.val>=p.val)
+                {
+                    return false;
+                }
+                prev = p;
+                curr = p.right;
+            }
+        }
+        return true;     
+    }
