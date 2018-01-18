@@ -1,0 +1,40 @@
+两种方法：第一个是Preorder 第二个是类似于BFS中的level traverse
+
+public void connect(TreeLinkNode root) {
+        if(root==null) return ;
+        if(root.left!=null)
+            root.left.next = root.right;
+        if(root.right!=null&&root.next!=null)
+            root.right.next = root.next.left;
+        
+        connect(root.left);
+        connect(root.right);
+    }
+这里要求是constant的space 同时假设二叉树是完美的二叉树，所有Leaf都在同一层，而且所有的parent都有两个children
+
+
+public void connect(TreeLinkNode root)
+    {
+        TreeLinkNode start = root;
+        while(start!=null)
+        {
+            TreeLinkNode cur = start;
+            while(cur!=null)
+            {
+                if(cur.left!=null)
+                    cur.left.next = cur.right;
+                if(cur.right!=null&&cur.next!=null)
+                    cur.right.next = cur.next.left;
+                
+                cur = cur.next;
+            }
+            
+            start = start.left;
+        }
+    }
+    
+    一行行的扫，一行行的处理
+    start来记录外循环，表示该层是否需要去处理，如果start = null 表示已经扫到了该二叉树的最底层的下面一层，可以直接退出来，start检测深度
+    cur来记录行循环，如果cur=null表示当前行已经处理完了，已经走到了该行最右侧
+    
+    
