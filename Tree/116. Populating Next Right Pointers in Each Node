@@ -1,4 +1,5 @@
 两种方法：第一个是Preorder 第二个是类似于BFS中的level traverse
+Time O(n) Space O(1)
 
 public void connect(TreeLinkNode root) {
         if(root==null) return ;
