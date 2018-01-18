@@ -1,0 +1,41 @@
+是116的follow up
+需要一个head记录当前行第一个不为空的节点，在循环结束时把cur=head
+需要一个pre记录当前行可以连接的那个点
+用cur同时进行深度的检测循环和每一行的检测循环。
+ 
+Time O(n) Space O(1)
+
+ public void connect(TreeLinkNode root) {
+        TreeLinkNode head = null;
+        TreeLinkNode pre = null;
+        TreeLinkNode cur = root;
+        while(cur!=null)
+        {
+            while(cur!=null)
+            {
+                if(cur.left!=null)
+                {
+                    if(pre!=null)
+                        pre.next = cur.left;
+                    else
+                        head = cur.left;
+                    pre = cur.left;
+                }
+                
+                if(cur.right!=null)
+                {
+                    if(pre!=null)
+                        pre.next = cur.right;
+                    else
+                        head = cur.right;
+                    pre = cur.right;
+                }
+                
+                cur = cur.next;
+            }
+            
+            cur = head;
+            head = null;
+            pre = null;
+        }
+    }
