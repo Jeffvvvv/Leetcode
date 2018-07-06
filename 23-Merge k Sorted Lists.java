@@ -1,7 +1,7 @@
-Time complexity: O(nlog(k))
-recommend to use 优先队列（array同理）
-也可用分治，但不推荐，这里两个方法都写
-MergeSort有一个简便写法和一个常规写法
+//Time complexity: O(nlog(k))
+//recommend to use 优先队列（array同理）
+//也可用分治，但不推荐，这里两个方法都写
+//MergeSort有一个简便写法和一个常规写法
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         //test boundary cases
