@@ -1,17 +1,17 @@
-Leetcode 30 
+// Leetcode 30 
 
-Tag: HashMap
+// Tag: HashMap
 
-Solutions:
-用一个HashMap把words里面的每一个字符串作为key存起来，并附上相应的个数作为value值。
-从字符串s的第一个char开始遍历，长度是0到s.length()-n*m，把所有满足条件的index加到结果里。
+// Solutions:
+// 用一个HashMap把words里面的每一个字符串作为key存起来，并附上相应的个数作为value值。
+// 从字符串s的第一个char开始遍历，长度是0到s.length()-n*m，把所有满足条件的index加到结果里。
 
-Use HashMap to store every string of the array words as the key, and set correspoding number of this string as its value.
-Define two integer variables m and n. m represents the the length of the words, n represents the length of every string element of the arrary words.
-Traverse the target string s from index 0 to s.length()-n*m, if index satisfy the requirement, add the index into the result list.
+// Use HashMap to store every string of the array words as the key, and set correspoding number of this string as its value.
+// Define two integer variables m and n. m represents the the length of the words, n represents the length of every string element of the arrary words.
+// Traverse the target string s from index 0 to s.length()-n*m, if index satisfy the requirement, add the index into the result list.
 
 
-Source Code:
+// Source Code:
 
 public List<Integer> findSubstring(String s, String[] words) {
         if(s==null||s.length()==0||words.length==0||words[0].length()==0) return new ArrayList<Integer>();
