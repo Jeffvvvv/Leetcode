@@ -2,9 +2,12 @@
 
 ## Outline
 - Binary Tree DFS Traverse
-  - preorder / inorder / postorder (Iteration&Recursion)
+  - preorder / inorder / postorder (Iteration&Recursion&DivideConquer)
   - Divide & Conquer
   - Introduce DFS Template
+- Divide and Conquer
+  - Merge sort
+  - Quick sort
   
   
 
